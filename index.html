@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Trello CSS Guidelines</title>
+		<meta name="description" content="Trello CSS Guidelines">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="style.css">
+		<!--[if lt IE 9]>
+		<script src="node_modules/reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<a id="wixiweb-logo" href="http://www.wixiweb.fr">
+			<img src="assets/wixiweb-icon.png" />
+		</a>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h4>J'ai testé pour vous</h4>
+					<img src="assets/trello-logo-blue.png" alt="Trello's blue logo" class="simple" />
+					<h1>CSS Guidelines</h1>
+					<br />
+					<h4 style="text-style: italic;">Enfin une solution CSS pratique ?</h4>
+					<p>
+						<small><a href="https://twitter.com/bastientanesie">@BastienTanésie</a> / <a href="http://wixiweb.fr">Wixiweb</a></small>
+					</p>
+				</section>
+
+				<section data-background="#0079BF">
+					<h1>Le bon plan</h1>
+					<ol>
+						<li>Pourquoi ces guidelines</li>
+						<li>Les guidelines
+							<ol>
+								<li>Tools</li>
+								<li>File structure</li>
+								<li>Components</li>
+								<li>Javascript</li>
+								<li>Mixins</li>
+								<li>Utilities</li>
+							</ol>
+						</li>
+						<li>Retour d'expérience</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Pourquoi ces guidelines ?</h2>
+					<ul>
+						<li>Les CSS, c'est le bordel depuis le début</li>
+						<li><code class="inline">!important</code> et <i>inline</i>, on en parle ?</li>
+						<li>Mélange <i>classes</i> et <i>ids</i></li>
+						<li>CSS vs. JS</li>
+						<li>&laquo; Cette classe est encore utilisée ? &raquo;</li>
+					</ul>
+					<img src="http://i.giphy.com/ISXCvGTX3qBYA.gif" class="simple" />
+				</section>
+				
+				<section data-background="#0079BF">
+					<h1>Guidelines FTW</h1>
+					<h2>&ndash; Tools &ndash;</h2>
+					<br />
+					<h4>Bob le Bricoleur à la rescousse du CSS</h4>
+				</section>
+				
+				<section>
+					<h2>Tools</h2>
+					<blockquote>Use only imports, variables, and mixins (and only for vender-prefixed features) from CSS preprocessors</blockquote>
+					<ul>
+						<li>Lisibilité et simplicité du code</li>
+						<li>Vanilla CSS autant que faire se peut</li>
+						<li>Pas de fonctionnalités avancées des pré-processeurs<br />
+							Nesting abusif, boucles, etc.
+						</li>
+					</ul>
+				</section>
+				
+				<section data-background="#0079BF">
+					<h1>Guidelines FTW</h1>
+					<h2>&ndash; Components &ndash;</h2>
+					<br />
+					<h4>Moins de spécificité, c'est la clé du succès</h4>
+				</section>
+				
+				<section>
+					<h2>Components</h2>
+					<blockquote>Use the .component-descendant-descendant pattern for components</blockquote>
+					<ul>
+						<li>Évite les cascades de règles</li>
+						<li>Améliore la maintenabilité</li>
+						<li>Utiliser des <i>namespaces</i></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Components</h2>
+					<p>Pas de "sélecteur déscendant" :</p>
+					<pre><code data-trim>
+.global-header {...}
+
+.global-header .logo {...}
+
+.global-header .logo img {...}
+					</code></pre>
+					<p>Utilisation du namespacing :</p>
+					<pre><code data-trim>
+.global-header {...}
+
+    .global-header-logo {...}
+
+        .global-header-logo-image {...}
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Components</h2>
+					<p>Spécificité la plus basse possible,<br />évite les <code class="inline">!important</code> et le style <i>inline</i></p>
+					<ul>
+						<li>Tous les sélecteurs doivent être des classes <small>aucun ID ou élément</small></li>
+						<li>Pas d'underscores ni de camelCase <small>ou autre joyeuseté</small></li>
+						<li>Minuscules, séparés par des tirets</li>
+						<li>Indentation en fonction de la descendance</li>
+						<li>États et pseudo-classes sur la même colonne</li>
+					</ul>
+				</section>
+				
+				<section data-background="#0079BF">
+					<h1>Guidelines FTW</h1>
+					<h2>&ndash; Modifiers &ndash;</h2>
+					<br />
+					<h4>J'ai pas de sous-titres qui claque&hellip;</h4>
+				</section>
+				
+				<section>
+					<h2>Modifiers</h2>
+					<blockquote>Use the .component-descendant.mod-modifier pattern for modifier classes</blockquote>
+					<p>Besoin de transformer un élément dans un style particulier.</p>
+					<p>Exemple: un message en mode "erreur" ou "succès".</p>
+					<p>
+						La base est commune (un bloc de message),<br />
+						mais change visuellement selon le but :<br />
+						<i>Alerter, valider, informer, etc.</i>
+					</p>
+				</section>
+				
+				<section>
+					<h2>Modifiers</h2>
+					<pre><code data-trim>
+<div class="alert-message mod-succes">Message de succès</div>
+<div class="alert-message mod-error">Message d'erreur</div>
+					</code></pre>
+					<pre><code data-trim>
+.alert-message {...}
+.alert-message.mod-success {...}
+.alert-message.mod-error {...}
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Modifiers</h2>
+					<p><strong>Ne JAMAIS déclarer un <i>modifier</i> seul</strong> !</p>
+					<p>Un modifier est toujours rattaché à un <i>composant</i>.</p>
+					<br />
+					<p>Permet l'utilisation d'un <i>modifier</i> de même nom sur plusieurs <i>composants</i>.</p>
+					<p>Exemple : <code class="inline">.mod-success</code> sur un message et un bouton</p>
+				</section>
+				
+				<section>
+					<h2>Modifiers</h2>
+					<p>Si besoin d'écraser le style d'un déscendant,<br />utiliser exceptionnelement le <i>nesting</i>.</p>
+					<pre><code data-trim>
+.global-header-nav-item.mod-sign-up {
+    background: hsl(120, 70%, 40%);
+    color: #fff;
+
+    .global-header-nav-item-text {
+        font-weight: bold;
+    }
+}
+					</code></pre>
+					<p>Les <i>modifiers</i> sont placés en bas du fichier, après le composant original.</p>
+				</section>
+				
+				<section data-background="#0079BF">
+					<h1>Guidelines FTW</h1>
+					<h2>&ndash; File structure &ndash;</h2>
+					<br />
+					<h4>...</h4>
+				</section>
+				
+				<section>
+					<h2>File structure</h2>
+					<pre><code data-trim>
+@charset "UTF-8"
+@import "normalize.css"
+// Variables
+@import "media-queries.less"
+@import "colors.less"
+@import "other-variables-like-fonts.less"
+// Mixins
+@import "mixins.less"
+// Utils
+@import "utils.less"
+// Components
+@import "component-1.less"
+@import "component-2.less"
+@import "component-3.less"
+@import "component-4.less" // and so forth
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>— The End —</h1>
+					<h6>Merci</h6>
+					<br />
+					<img src="assets/trello-logo-blue.png" class="simple" width="50%" />
+					<br />
+					<p>Sources</p>
+					<ul>
+						<li><a href="https://gist.github.com/bobbygrace/9e961e8982f42eb91b80">Gist (GitHub) : Trello CSS Guide</a></li>
+						<li><a href="http://blog.trello.com/heres-the-official-trello-css-guide/">Trello blog : Here's the Official Treelo CSS Guide</a></li>
+					</ul>
+				</section>
+
+			</div><!-- .slides -->
+		</div>
+
+		<script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+		<script src="node_modules/reveal.js/js/reveal.js"></script>
+
+		<script>
+		    /* global Reveal hljs */
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide',
+				dependencies: [
+					{ src: 'node_modules/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
