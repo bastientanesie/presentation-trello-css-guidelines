@@ -28,181 +28,432 @@
 			<div class="slides">
 
 				<section>
-					<h4>J'ai testé pour vous</h4>
-					<img src="assets/trello-logo-blue.png" alt="Trello's blue logo" class="simple" />
-					<h1>CSS Guidelines</h1>
-					<br />
-					<h4 style="text-style: italic;">Enfin une solution CSS pratique ?</h4>
-					<p>
-						<small><a href="https://twitter.com/bastientanesie">@BastienTanésie</a> / <a href="http://wixiweb.fr">Wixiweb</a></small>
-					</p>
-				</section>
+					<section>
+						<h4>J'ai testé pour vous</h4>
+						<img src="assets/trello-logo-blue.png" alt="Trello's blue logo" class="simple" width="40%" />
+						<h1>CSS Guidelines</h1>
+						<br />
+						<h4 style="text-style: italic;">Enfin une solution CSS pratique ?</h4>
+						<p>
+							<small><a href="https://twitter.com/bastientanesie">@BastienTanésie</a> / <a href="http://wixiweb.fr">Wixiweb</a></small>
+						</p>
+					</section>
+					
+					<section data-background="#0079BF">
+						<h1>Le bon plan</h1>
+						<ol>
+							<li><a href="#/0/2">Pourquoi ces guidelines ?</a></li>
+							<li><a href="#/1">Les guidelines</a>
+								<ol>
+									<li><a href="#/1">Tools</a></li>
+									<li><a href="#/2">Components</a></li>
+									<li><a href="#/7">Javascript</a></li>
+									<li><a href="#/8">Mixins</a></li>
+									<li><a href="#/9">Utilities</a></li>
+									<li><a href="#/10">File structure</a></li>
+								</ol>
+							</li>
+							<li><a href="#/12">Retour d'expérience</a></li>
+						</ol>
+					</section>
+					
+					<section>
+						<h2>Pourquoi ces guidelines ?</h2>
+						<ul>
+							<li>Les CSS, c'est le bordel depuis le début</li>
+							<li><code class="inline">!important</code> et <i>inline</i>, on en parle ?</li>
+							<li>Mélange <i>classes</i> et <i>ids</i></li>
+							<li>CSS vs. JS</li>
+							<li>&laquo; Cette classe est encore utilisée ? &raquo;</li>
+						</ul>
+						<img src="http://i.giphy.com/ISXCvGTX3qBYA.gif" class="simple" />
+					</section>
+				</section><!-- intro + summary -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Tools</h1>
+						<br />
+						<h4>Bob le Bricoleur à la rescousse du CSS</h4>
+					</section>
+					
+					<section>
+						<h2>Tools</h2>
+						<blockquote>Use only imports, variables, and mixins (and only for vender-prefixed features) from CSS preprocessors</blockquote>
+						<ul>
+							<li>Lisibilité et simplicité du code</li>
+							<li>Vanilla CSS autant que faire se peut</li>
+							<li>Pas de fonctionnalités avancées des pré-processeurs<br />
+								Nesting abusif, boucles, etc.
+							</li>
+						</ul>
+					</section>
+				</section><!-- tools -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Components</h1>
+						<br />
+						<h4>Moins de spécificité, c'est la clé du succès</h4>
+					</section>
+					
+					<section>
+						<h2>Components</h2>
+						<blockquote>Use the <code class="inline">.component-descendant-descendant</code> pattern for components</blockquote>
+						<ul>
+							<li>Évite les cascades de règles</li>
+							<li>Améliore la maintenabilité</li>
+							<li>Utiliser des <i>namespaces</i></li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Components</h2>
+						<p>Pas de "sélecteur déscendant" :</p>
+						<pre><code data-trim class="less">
+.global-header {}
 
-				<section data-background="#0079BF">
-					<h1>Le bon plan</h1>
-					<ol>
-						<li>Pourquoi ces guidelines</li>
-						<li>Les guidelines
-							<ol>
-								<li>Tools</li>
-								<li>File structure</li>
-								<li>Components</li>
-								<li>Javascript</li>
-								<li>Mixins</li>
-								<li>Utilities</li>
-							</ol>
-						</li>
-						<li>Retour d'expérience</li>
-					</ol>
-				</section>
+.global-header .logo {}
 
-				<section>
-					<h2>Pourquoi ces guidelines ?</h2>
-					<ul>
-						<li>Les CSS, c'est le bordel depuis le début</li>
-						<li><code class="inline">!important</code> et <i>inline</i>, on en parle ?</li>
-						<li>Mélange <i>classes</i> et <i>ids</i></li>
-						<li>CSS vs. JS</li>
-						<li>&laquo; Cette classe est encore utilisée ? &raquo;</li>
-					</ul>
-					<img src="http://i.giphy.com/ISXCvGTX3qBYA.gif" class="simple" />
-				</section>
-				
-				<section data-background="#0079BF">
-					<h1>Guidelines FTW</h1>
-					<h2>&ndash; Tools &ndash;</h2>
-					<br />
-					<h4>Bob le Bricoleur à la rescousse du CSS</h4>
-				</section>
-				
-				<section>
-					<h2>Tools</h2>
-					<blockquote>Use only imports, variables, and mixins (and only for vender-prefixed features) from CSS preprocessors</blockquote>
-					<ul>
-						<li>Lisibilité et simplicité du code</li>
-						<li>Vanilla CSS autant que faire se peut</li>
-						<li>Pas de fonctionnalités avancées des pré-processeurs<br />
-							Nesting abusif, boucles, etc.
-						</li>
-					</ul>
-				</section>
-				
-				<section data-background="#0079BF">
-					<h1>Guidelines FTW</h1>
-					<h2>&ndash; Components &ndash;</h2>
-					<br />
-					<h4>Moins de spécificité, c'est la clé du succès</h4>
-				</section>
-				
-				<section>
-					<h2>Components</h2>
-					<blockquote>Use the .component-descendant-descendant pattern for components</blockquote>
-					<ul>
-						<li>Évite les cascades de règles</li>
-						<li>Améliore la maintenabilité</li>
-						<li>Utiliser des <i>namespaces</i></li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>Components</h2>
-					<p>Pas de "sélecteur déscendant" :</p>
-					<pre><code data-trim>
-.global-header {...}
+.global-header .logo img {}
+						</code></pre>
+						<p>Utilisation du namespacing :</p>
+						<pre><code data-trim class="less">
+.global-header {}
 
-.global-header .logo {...}
-
-.global-header .logo img {...}
-					</code></pre>
-					<p>Utilisation du namespacing :</p>
-					<pre><code data-trim>
-.global-header {...}
-
-    .global-header-logo {...}
-
-        .global-header-logo-image {...}
-					</code></pre>
-				</section>
+    .global-header-logo {}
+    
+        .global-header-logo-image {}
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>Components</h2>
+						<p>Spécificité la plus basse possible,<br />évite les <code class="inline">!important</code> et le style <i>inline</i></p>
+						<ul>
+							<li>Tous les sélecteurs doivent être des classes <small>aucun ID ou élément</small></li>
+							<li>Pas d'underscores ni de camelCase <small>ou autre joyeuseté</small></li>
+							<li>Minuscules, séparés par des tirets</li>
+							<li>Indentation en fonction de la descendance</li>
+							<li>États et pseudo-classes sur la même colonne</li>
+						</ul>
+					</section>
+				</section><!-- components -->
 				
 				<section>
-					<h2>Components</h2>
-					<p>Spécificité la plus basse possible,<br />évite les <code class="inline">!important</code> et le style <i>inline</i></p>
-					<ul>
-						<li>Tous les sélecteurs doivent être des classes <small>aucun ID ou élément</small></li>
-						<li>Pas d'underscores ni de camelCase <small>ou autre joyeuseté</small></li>
-						<li>Minuscules, séparés par des tirets</li>
-						<li>Indentation en fonction de la descendance</li>
-						<li>États et pseudo-classes sur la même colonne</li>
-					</ul>
-				</section>
-				
-				<section data-background="#0079BF">
-					<h1>Guidelines FTW</h1>
-					<h2>&ndash; Modifiers &ndash;</h2>
-					<br />
-					<h4>J'ai pas de sous-titres qui claque&hellip;</h4>
-				</section>
-				
-				<section>
-					<h2>Modifiers</h2>
-					<blockquote>Use the .component-descendant.mod-modifier pattern for modifier classes</blockquote>
-					<p>Besoin de transformer un élément dans un style particulier.</p>
-					<p>Exemple: un message en mode "erreur" ou "succès".</p>
-					<p>
-						La base est commune (un bloc de message),<br />
-						mais change visuellement selon le but :<br />
-						<i>Alerter, valider, informer, etc.</i>
-					</p>
-				</section>
-				
-				<section>
-					<h2>Modifiers</h2>
-					<pre><code data-trim>
+					<section data-background="#0079BF">
+						<h1>Components</h1>
+						<h2>&mdash; Modifiers &mdash;</h2>
+					</section>
+					
+					<section>
+						<h2>Components : Modifiers</h2>
+						<blockquote>Use the <code class="inline">.component-descendant.mod-modifier</code> pattern for modifier classes</blockquote>
+						<p>Besoin de transformer un élément dans un style particulier.</p>
+						<p>Exemple: un message en mode "erreur" ou "succès".</p>
+						<p>
+							La base est commune (un bloc de message),<br />
+							mais change visuellement selon le but :<br />
+							<i>Alerter, valider, informer, etc.</i>
+						</p>
+					</section>
+					
+					<section>
+						<h2>Components : Modifiers</h2>
+						<pre><code class="html" data-trim>
 <div class="alert-message mod-succes">Message de succès</div>
 <div class="alert-message mod-error">Message d'erreur</div>
-					</code></pre>
-					<pre><code data-trim>
-.alert-message {...}
-.alert-message.mod-success {...}
-.alert-message.mod-error {...}
-					</code></pre>
-				</section>
-				
-				<section>
-					<h2>Modifiers</h2>
-					<p><strong>Ne JAMAIS déclarer un <i>modifier</i> seul</strong> !</p>
-					<p>Un modifier est toujours rattaché à un <i>composant</i>.</p>
-					<br />
-					<p>Permet l'utilisation d'un <i>modifier</i> de même nom sur plusieurs <i>composants</i>.</p>
-					<p>Exemple : <code class="inline">.mod-success</code> sur un message et un bouton</p>
-				</section>
-				
-				<section>
-					<h2>Modifiers</h2>
-					<p>Si besoin d'écraser le style d'un déscendant,<br />utiliser exceptionnelement le <i>nesting</i>.</p>
-					<pre><code data-trim>
+						</code></pre>
+						<pre><code class="less" data-trim >
+.alert-message {}
+.alert-message.mod-success {}
+.alert-message.mod-error {}
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>Components : Modifiers</h2>
+						<p><strong>Ne JAMAIS déclarer un <i>modifier</i> seul</strong> !</p>
+						<p>Un <i>modifier</i> est toujours rattaché à un <i>composant</i>.</p>
+						<br />
+						<p>Permet l'utilisation d'un <i>modifier</i> de même nom sur plusieurs <i>composants</i>.</p>
+						<p>Exemple : <code class="inline">.mod-success</code> sur un message et un bouton</p>
+					</section>
+					
+					<section>
+						<h2>Components : Modifiers</h2>
+						<p>Si besoin d'écraser le style d'un déscendant,<br />utiliser exceptionnelement le <i>nesting</i>.</p>
+						<pre><code class="less" data-trim>
 .global-header-nav-item.mod-sign-up {
     background: hsl(120, 70%, 40%);
     color: #fff;
-
+    
     .global-header-nav-item-text {
         font-weight: bold;
     }
 }
-					</code></pre>
-					<p>Les <i>modifiers</i> sont placés en bas du fichier, après le composant original.</p>
-				</section>
-				
-				<section data-background="#0079BF">
-					<h1>Guidelines FTW</h1>
-					<h2>&ndash; File structure &ndash;</h2>
-					<br />
-					<h4>...</h4>
-				</section>
+						</code></pre>
+					</section>
+				</section><!-- components: modifiers -->
 				
 				<section>
-					<h2>File structure</h2>
-					<pre><code data-trim>
+					<section data-background="#0079BF">
+						<h1>Components</h1>
+						<h2>&mdash; States &mdash;</h2>
+						<br />
+						<h4>Pas forcément unis</h4>
+					</section>
+					
+					<section>
+						<h2>Components : States</h2>
+						<blockquote>Use the <code class="inline">.component-descendant.is-state</code> pattern for state.<br />Manipulate <code class="inline">.is-</code> classes in JavaScript (but not presentation classes).</blockquote>
+						<p>Gestion des états spécifiques des <i>composants</i>.</p>
+						<br />
+						<p>Exemple: <code class="inline">.is-loading</code>, <code class="inline">.is-disabled</code>, <code class="inline">.is-hidden</code>, etc.</p>
+						<br />
+						<p>Séparation des états et de la présentation.</p>
+					</section>
+					
+					<section>
+						<h2>Components : States</h2>
+						<p>Exemple du logo de Trello en mode "chargement" :</p>
+						<pre><code class="css" data-trim>
+.global-header-logo-image {
+    background: url("logo.png");
+    height: 40px;
+    width: 200px;
+}
+
+.global-header-logo-image.is-loading {
+    background: url("logo-loading.gif");
+}
+						</code></pre>
+						<p>En BEM : <code class="inline">.global-header-logo-image--is-loading</code></p>
+						<br />
+						<ul class="unstyled">
+							<li>&mdash; <strong>Dev</strong> : Tiens, cet élément a une classe <code class="inline">.is-loading</code> pour le status "en chargement", à toi de jouer !</li>
+							<li>&mdash; <strong>Designer</strong> : Cool, merci ! J'vais me débrouiller avec ça :)</li>
+						</ul>
+					</section>
+					
+					<section data-background-video="assets/permit-denied.mp4" data-background-video-loop>
+						<h2>Components : States</h2>
+						<p>Chaque <i>composant</i> définit ses propres états</p>
+						<p>Jamais de <code class="inline">.is-</code> sans <i>composan</i> ciblé !</p>
+						<br />
+						<p>
+							Donc<br />
+							<code class="inline">.is-hidden { display: none; }</code><br />
+							=<br />
+							<i>&laquo; Permit denied &raquo;</i>
+						</p>
+					</section>
+				</section><!-- components: states -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Components</h1>
+						<h2>&mdash; Media Queries &mdash;</h2>
+						<br />
+						<h4>Fini le casse-tête des break-points</h4>
+					</section>
+					
+					<section>
+						<h2>Components : Media Queries</h2>
+						<blockquote>Use media query variables in your component.</blockquote>
+						<br />
+						<p>Regrouper toutes les <i>Media Queries</i> dans un seul fichier.</p>
+						<p>Chaque <i>Media Query</i> (ou break-point) est stockée dans une variable.</p>
+					</section>
+					
+					<section>
+						<h2>Components : Media Queries</h2>
+						<p>Déclaration des variables</p>
+						<pre><code class="less" data-trim>
+@highdensity:  ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+               ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+               ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+               ~"only screen and (min-device-pixel-ratio: 1.5)";
+
+@small:        ~"only screen and (max-width: 750px)";
+@medium:       ~"only screen and (min-width: 751px) and (max-width: 900px)";
+@large:        ~"only screen and (min-width: 901px) and (max-width: 1280px)";
+@extra-large:  ~"only screen and (min-width: 1281px)";
+
+@print:        ~"print";
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>Components : Media Queries</h2>
+						<p>Utilisation des <i>Media Queries</i> dans les <i>composants</i></p>
+						<pre><code class="less" data-trim>
+/* Input */
+@media @large { 
+    .component-nav {}
+}
+
+/* Output */
+@media only screen and (min-width: 901px) and (max-width: 1280px) {
+    .component-nav {}
+}
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>Components : Media Queries</h2>
+						<p>On peut améliorer les perfs en regroupant/compressant toutes les <i>Media Queries</i></p>
+						<p>avec <a href="https://www.npmjs.com/package/css-mqpacker">css-mqpacker</a> par exemple</p>
+						<p class="small"><code class="inline">npm install css-mqpacker --save-dev</code></p>
+					</section>
+				</section><!-- components: media-queries -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Components</h1>
+						<h2>&mdash; Keeping It Encapsulated &mdash;</h2>
+						<br />
+						<h4>Spoiler : on ne parlera même pas de café&hellip;</h4>
+					</section>
+					
+					<section>
+						<h2>Components : Encapsulate</h2>
+						<p>Un composant dans un autre : <i>compo-ception !</i></p>
+						<br />
+						<p style="text-transform: uppercase;">La règle</p>
+						<p>Un composant ne doit rien connaître des autres</p>
+					</section>
+					
+					<section>
+						<h2>Components : Encapsulate</h2>
+						<p>Exemple : une liste et un bouton</p>
+						<p>Besoin : modifier la taille et la position du bouton</p>
+					    <pre><code class="html" data-trim>
+<div class="member-list">
+    <div class="member-list-item">
+        <p class="member-list-item-name">Gumby</p>
+        <div class="member-list-item-action"><!-- conteneur pour la positon -->
+            <a href="#" class="button mod-small">Add</a><!-- modifier pour la taille -->
+        </div>
+    </div>
+</div>
+					    </code></pre>
+				    </section>
+				    
+				    <section>
+				        <h2>Components : Encapsulate</h2>
+				        <p>Ce qu'il ne faut pas faire</p>
+				        <pre><code class="html" data-trim>
+<div class="member-list">
+    <div class="member-list-item">
+        <p class="member-list-item-name">Pat</p>
+        <a href="#" class="member-list-item-button button">Add</a>
+    </div>
+</div>
+				        </code></pre>
+				        <pre><code class="less" data-trim>
+// components/member-list.less
+.member-list-item-button {
+    float: right;
+    padding: 6px 10px;
+}
+				        </code></pre>
+				    </section>
+				    
+				    <section>
+						<h2>Components : Encapsulate</h2>
+						<p>Beaucoup de <i>composants</i>, c'est normal</p>
+						<p>Ne pas hésiter à éclater les gros <i>composants</i> en plusieurs plus petits</p>
+						<br />
+						<p class="small">
+						    Beaucoup de <i>modifiers</i> et/ou de déscendants ?<br />
+						    Il est temps de <i>splitter</i> !
+						</p>
+					</section>
+				</section><!-- components: encapsulate -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Javascript</h1>
+						<br />
+						<h4>On ne mélange pas les torchons et les serviettes</h4>
+					</section>
+					
+					<section>
+						<h2>Javascript</h2>
+						<blockquote>Separate style and behavior concerns by using <code class="inline">.js-</code> prefixed classes for behavior.</blockquote>
+						<br />
+						<p>Séparation de la logique (JS) et de la présentation (CSS).</p>
+						<p class="small">Rappel : ne jamais utiliser d'ID en JS</p>
+					</section>
+					
+					<section>
+						<h2>Javascript</h2>
+						<p>Utiliser des noms de classes clairs, qui ont du sens :</p>
+						<p class="small">
+						    <code class="inline">.js-open-content-menu</code> au lieu de <code class="inline">.js-menu</code>
+					    </p>
+						<br />
+						<p>Ne jamais avoir un <code class="inline">.js-</code> dans un fichier CSS</p>
+					</section>
+				</section><!-- javascript -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Mixins</h1>
+					</section>
+					
+					<section>
+						<h2>Mixins</h2>
+						<blockquote>Prefix mixins with <code class="inline">.m-</code> and only use them sparingly for shared styles.</blockquote>
+						<p>Pour des styles partagés entre plusieurs <i>composants</i></p>
+						<p class="small">Pour les <i>vendor-prefixes</i>, on peut utiliser <a href="https://www.npmjs.com/package/autoprefixer">autoprefixer</a> à la place</p>
+						<pre><code class="less" data-trim>
+// mixins.less
+.m-list-divider () {
+    border-bottom: 1px solid @light-gray-300;
+}
+// component.less
+.component-descendent {
+    .m-list-divider();
+}
+						</code></pre>
+					</section>
+				</section><!-- mixins -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>Utilities</h1>
+					</section>
+					
+					<section>
+						<h2>Utilities</h2>
+						<blockquote>Prefix utility classes with <code class="inline">.u-</code>.</blockquote>
+						<p class="small"><i>clearfix</i>, alignement vertical, styles de texte, etc.</p>
+						<br />
+						<pre><code class="less" data-trim>
+.u-truncate-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+						</code></pre>
+						<p>Tout ça dans un seul et même fichier.</p>
+						<br />
+						<p class="small">Pas de <code class="inline">.u-float-left</code>, directement dans le <i>composant</i></p>
+					</section>
+				</section><!-- utilities -->
+				
+				<section>
+					<section data-background="#0079BF">
+						<h1>File structure</h1>
+						<br />
+						<h4>Mais comment qu'on organise tout ça ?</h4>
+					</section>
+					
+					<section>
+						<h2>File structure</h2>
+						<pre><code data-trim class="less">
 @charset "UTF-8"
 @import "normalize.css"
 // Variables
@@ -218,21 +469,43 @@
 @import "component-2.less"
 @import "component-3.less"
 @import "component-4.less" // and so forth
-					</code></pre>
+						</code></pre>
+					</section>
+					
+					<section>
+						<h2>File structure</h2>
+						<p>Si c'est bien fait, pas besoin d'organiser les <i>composants</i></p>
+						<p class="small">Comprennez : l'ordre des composants n'a pas d'importance</p>
+						<br />
+						<p>En sortie : un seul fichier CSS</p>
+						<p class="small">Facile à compresser avec un <a href="http://gulpjs.com/"><i>task-runner</i> à la mode</a></p>
+					</section>
+				</section><!-- file structure -->
+				
+				<section data-background="#6C547B">
+					<h2>Bonus</h2>
+					<br />
+					<p>L'ordre a son importance</p>
+					<p><code class="inline">component mod util state js</code></p>
+				</section><!-- bonus -->
+				
+				<section data-background="#009688">
+					<h1>Retour d'expérience</h1>
+					<br />
+					<p>Comme si j'avais vraiment de l'expérience&hellip;</p>
 				</section>
 
-				<section>
-					<h1>— The End —</h1>
-					<h6>Merci</h6>
+				<section data-background="assets/hasselhoff-jacket.gif">
 					<br />
-					<img src="assets/trello-logo-blue.png" class="simple" width="50%" />
+					<h1>&mdash; The End &mdash;</h1>
+					<h6>Merci</h6>
 					<br />
 					<p>Sources</p>
 					<ul>
 						<li><a href="https://gist.github.com/bobbygrace/9e961e8982f42eb91b80">Gist (GitHub) : Trello CSS Guide</a></li>
 						<li><a href="http://blog.trello.com/heres-the-official-trello-css-guide/">Trello blog : Here's the Official Treelo CSS Guide</a></li>
 					</ul>
-				</section>
+				</section><!-- the end -->
 
 			</div><!-- .slides -->
 		</div>
@@ -243,6 +516,8 @@
 		<script>
 		    /* global Reveal hljs */
 			Reveal.initialize({
+				// height: '100%',
+				width: '100%',
 				controls: true,
 				progress: true,
 				history: true,
