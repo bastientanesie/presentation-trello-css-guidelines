@@ -239,7 +239,7 @@
 					<section data-background-video="assets/permit-denied.mp4" data-background-video-loop>
 						<h2>Components : States</h2>
 						<p>Chaque <i>composant</i> définit ses propres états</p>
-						<p>Jamais de <code class="inline">.is-</code> sans <i>composan</i> ciblé !</p>
+						<p>Jamais de <code class="inline">.is-</code> sans <i>composant</i> ciblé !</p>
 						<br />
 						<p>
 							Donc<br />
@@ -328,21 +328,7 @@
 						<h2>Components : Encapsulate</h2>
 						<p>Exemple : une liste et un bouton</p>
 						<p>Besoin : modifier la taille et la position du bouton</p>
-					    <pre><code class="html" data-trim>
-<div class="member-list">
-    <div class="member-list-item">
-        <p class="member-list-item-name">Gumby</p>
-        <div class="member-list-item-action"><!-- conteneur pour la positon -->
-            <a href="#" class="button mod-small">Add</a><!-- modifier pour la taille -->
-        </div>
-    </div>
-</div>
-					    </code></pre>
-				    </section>
-				    
-				    <section>
-				        <h2>Components : Encapsulate</h2>
-				        <p>Ce qu'il ne faut pas faire</p>
+						<p>Ce qu'il ne faut pas faire :</p>
 				        <pre><code class="html" data-trim>
 <div class="member-list">
     <div class="member-list-item">
@@ -358,6 +344,21 @@
     padding: 6px 10px;
 }
 				        </code></pre>
+				    </section>
+				    
+				    <section>
+				        <h2>Components : Encapsulate</h2>
+				        <p>Ce qu'il faut faire :</p>
+				        <pre><code class="html" data-trim>
+<div class="member-list">
+    <div class="member-list-item">
+        <p class="member-list-item-name">Gumby</p>
+        <div class="member-list-item-action"><!-- conteneur pour la positon -->
+            <a href="#" class="button mod-small">Add</a><!-- modifier pour la taille -->
+        </div>
+    </div>
+</div>
+					    </code></pre>
 				    </section>
 				    
 				    <section>
@@ -485,7 +486,7 @@
 				<section data-background="#6C547B">
 					<h2>Bonus</h2>
 					<br />
-					<p>L'ordre a son importance</p>
+					<p>L'ordre des classes a son importance</p>
 					<p><code class="inline">component mod util state js</code></p>
 				</section><!-- bonus -->
 				
@@ -503,7 +504,7 @@
 					<p>Sources</p>
 					<ul>
 						<li><a href="https://gist.github.com/bobbygrace/9e961e8982f42eb91b80">Gist (GitHub) : Trello CSS Guide</a></li>
-						<li><a href="http://blog.trello.com/heres-the-official-trello-css-guide/">Trello blog : Here's the Official Treelo CSS Guide</a></li>
+						<li><a href="http://blog.trello.com/heres-the-official-trello-css-guide/">Trello blog : Here's the Official Trello CSS Guide</a></li>
 					</ul>
 				</section><!-- the end -->
 
